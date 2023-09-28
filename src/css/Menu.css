@@ -1,0 +1,48 @@
+.menu-container {
+  position: fixed; /* Cambia a fijo para que quede fijo en la parte superior */
+  top: 0; /* Se ubica en la parte superior de la ventana */
+  left: 0;
+  width: 100%;
+  background-color: #f4f5fa;
+  display: flex;
+  justify-content: space-around;
+  z-index: 1;
+}
+
+.menu-items {
+  display: flex;
+  align-items: center;
+}
+
+.menu-item {
+  position: relative; /* Cambio a relativo para que los submenús sean relativos a este elemento */
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  background: #a8a8a8;
+}
+
+.has-submenu::after {
+  content: '▶';
+  position: absolute; /* Cambio a absoluto para que aparezca a la derecha */
+  right: 10px; /* Espaciado a la derecha del elemento */
+  top: 50%; /* Centrado verticalmente */
+  transform: translateY(-50%); /* Alineación vertical al centro */
+}
+
+.sub-menu {
+  display: none; /* Inicialmente ocultamos los submenús */
+  position: absolute; /* Cambio a absoluto para que aparezcan sobre otros elementos */
+  top: 100%; /* Aparecen debajo de los elementos principales */
+  left: 0; /* Alineados a la izquierda */
+  background-color: #f4f5fa; /* Color de fondo */
+  z-index: 2; /* Se muestran encima de otros elementos */
+  min-width: 100%; /* Ancho mínimo igual al contenedor principal */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para resaltar */
+}
+
+.open-submenu .sub-menu {
+  display: block; /* Mostramos el submenú cuando está abierto */
+}

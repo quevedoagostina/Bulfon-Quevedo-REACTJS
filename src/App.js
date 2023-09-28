@@ -1,23 +1,47 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import DrawClass from './DrawClass';
+import Menu from './Menu';
 
 function App() {
+  const CLASS_UML = {
+    name: 'Person',
+    attributes: ['+name:str', '+phoneNumber:str', '+emailAddress:str'],
+    methods: ['+purchaseParkingPass()'],
+    borderColor: '#DC2DDE',
+    headColor: '#DC2DDE',
+    textColor: '#333333',
+  };
+
+  const configMenu = {
+
+    menuItems: [
+      { name: 'Home', isFolder: false },
+      {
+        name: 'Services',
+        isFolder: true,
+        subItems: [
+          { name: 'Service 1', isFolder: false },
+          { name: 'Service 2', isFolder: false },
+        ],
+      },
+      {
+        name: 'Products',
+        isFolder: true,
+        subItems: [
+          { name: 'Product 1', isFolder: false },
+          { name: 'Product 2', isFolder: false },
+        ],
+      },
+      { name: 'Contact', isFolder: false },
+    ],
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>My React App</h1>
+      <DrawClass data={CLASS_UML} />
+      <Menu data={configMenu} />
     </div>
   );
 }
