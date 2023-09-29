@@ -27,7 +27,7 @@
 .has-submenu::after {
   content: '▶';
   position: absolute; /* Cambio a absoluto para que aparezca a la derecha */
-  right: 10px; /* Espaciado a la derecha del elemento */
+  right: 5px; /* Espaciado a la derecha del elemento */
   top: 50%; /* Centrado verticalmente */
   transform: translateY(-50%); /* Alineación vertical al centro */
 }
@@ -35,12 +35,17 @@
 .sub-menu {
   display: none; /* Inicialmente ocultamos los submenús */
   position: absolute; /* Cambio a absoluto para que aparezcan sobre otros elementos */
-  top: 100%; /* Aparecen debajo de los elementos principales */
-  left: 0; /* Alineados a la izquierda */
+  top: 30px; /* Alineados al inicio */
+  left: 100%; /* Aparecen a la derecha */
   background-color: #f4f5fa; /* Color de fondo */
   z-index: 2; /* Se muestran encima de otros elementos */
-  min-width: 100%; /* Ancho mínimo igual al contenedor principal */
+  min-width: 200px; /* Ancho mínimo ajustado */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para resaltar */
+}
+
+.right-submenu .sub-menu {
+  left: -100%; /* Cambia a izquierda para que aparezca a la izquierda */
+  right: auto; /* Ajusta el valor derecho a automático */
 }
 
 .open-submenu .sub-menu {

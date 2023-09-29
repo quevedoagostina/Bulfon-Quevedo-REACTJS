@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
-import './css/Menu.css'; 
+import './css/Menu.css';
 
 const MenuItem = ({ item, onItemClick }) => {
-    const [isSubMenuOpen, setSubMenuOpen] = useState(false);
-  
-    const toggleSubMenu = () => {
+  const [isSubMenuOpen, setSubMenuOpen] = useState(false);
+
+  const toggleSubMenu = () => {
+    if (item.isFolder) {
       setSubMenuOpen(!isSubMenuOpen);
-    };
-  
-    return (
+    }
+  };
+
+  return (
+    <div
+      className={`menu-item ${item.isFolder ? 'has-submenu' : ''} ${
+        isSubMenuOpen ? 'open-submenu' : ''
+      }`}
+    >
       <div
-        className={`menu-item ${item.isFolder ? 'has-submenu' : ''} ${
-          isSubMenuOpen ? 'open-submenu' : ''
-        }`}
         onClick={() => {
           if (item.isFolder) {
             toggleSubMenu();
@@ -22,17 +26,19 @@ const MenuItem = ({ item, onItemClick }) => {
         }}
       >
         {item.name}
-        {item.isFolder && (
-          <div className={`sub-menu ${isSubMenuOpen ? 'open-submenu' : ''}`}>
-            {item.subItems.map((subItem, index) => (
-              <MenuItem key={index} item={subItem} onItemClick={onItemClick} />
-            ))}
-          </div>
-        )}
       </div>
-    );
-  };
-  
+      {item.isFolder && (
+        <div className={`sub-menu ${isSubMenuOpen ? 'open-submenu' : ''}`}>
+          {item.subItems.map((subItem, index) => (
+            <MenuItem key={index} item={subItem} onItemClick={onItemClick} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+
 const Menu = ({ data }) => {
   const { menuItems } = data;
 

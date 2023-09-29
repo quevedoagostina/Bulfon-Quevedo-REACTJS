@@ -5,41 +5,59 @@ import Menu from './Menu';
 
 function App() {
   const CLASS_UML = {
-    name: 'Person',
-    attributes: ['+name:str', '+phoneNumber:str', '+emailAddress:str'],
-    methods: ['+purchaseParkingPass()'],
+    name: 'Persona',
+    attributes: ['+nombre:str', '+numeroCelular:str', '+patente:str'],
+    methods: ['+comprarPaseEstacionamiento()'],
     borderColor: '#DC2DDE',
     headColor: '#DC2DDE',
     textColor: '#333333',
   };
 
   const configMenu = {
-
     menuItems: [
       { name: 'Home', isFolder: false },
       {
-        name: 'Services',
+        name: 'Servicio',
         isFolder: true,
         subItems: [
-          { name: 'Service 1', isFolder: false },
-          { name: 'Service 2', isFolder: false },
+          { name: 'Estacionamiento', isFolder: false },
+          { name: 'Guardar Casco', isFolder: false },
         ],
       },
       {
-        name: 'Products',
+        name: 'Vehículos',
         isFolder: true,
         subItems: [
-          { name: 'Product 1', isFolder: false },
-          { name: 'Product 2', isFolder: false },
+          {
+            name: 'Auto',
+            isFolder: true,
+            isOpen: false, // Estado inicial cerrado
+            subItems: [
+              { name: 'Ford', isFolder: false },
+              { name: 'Toyota', isFolder: false },
+              { name: 'Fiat', isFolder: false },
+            ],
+          },
+          {
+            name: 'Moto',
+            isFolder: true,
+            isOpen: false, // Estado inicial cerrado
+            subItems: [
+              { name: 'Yamaha', isFolder: false },
+              { name: 'Honda', isFolder: false },
+              { name: 'Kawasaki', isFolder: false },
+            ],
+          },
         ],
       },
-      { name: 'Contact', isFolder: false },
+      { name: 'Contacto', isFolder: false },
     ],
   };
+  
 
   return (
     <div className="App">
-      <h1>My React App</h1>
+      <h1>Estacionamiento Quevedo</h1>
       <DrawClass data={CLASS_UML} />
       <Menu data={configMenu} />
     </div>
