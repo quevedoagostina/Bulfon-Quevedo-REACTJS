@@ -1,53 +1,58 @@
+/* Menu.css */
 .menu-container {
-  position: fixed; /* Cambia a fijo para que quede fijo en la parte superior */
-  top: 0; /* Se ubica en la parte superior de la ventana */
+  position: fixed;
+  top: 0;
   left: 0;
   width: 100%;
-  background-color: #f4f5fa;
+  background-color: #333;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   z-index: 1;
+  font-family: Arial, sans-serif; /* Cambia la fuente de letra */
 }
 
 .menu-items {
   display: flex;
   align-items: center;
+  list-style: none; /* Elimina las viñetas de la lista */
+  padding: 0; /* Elimina el relleno predeterminado de la lista */
+  margin: 0; /* Elimina el margen predeterminado de la lista */
 }
 
 .menu-item {
-  position: relative; /* Cambio a relativo para que los submenús sean relativos a este elemento */
+  position: relative;
   padding: 10px 20px;
   cursor: pointer;
+  color: #fff; /* Color de texto blanco */
+  text-decoration: none; /* Quita subrayado de enlaces */
 }
 
 .menu-item:hover {
-  background: #a8a8a8;
+  background: #555; /* Cambia el color de fondo en el hover */
 }
 
 .has-submenu::after {
   content: '▶';
-  position: absolute; /* Cambio a absoluto para que aparezca a la derecha */
-  right: 5px; /* Espaciado a la derecha del elemento */
-  top: 50%; /* Centrado verticalmente */
-  transform: translateY(-50%); /* Alineación vertical al centro */
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff; /* Color de flecha blanco */
+  font-size: 0.5em; /* Ajusta el tamaño de la flecha (puedes ajustar el valor según tus preferencias) */
 }
+
 
 .sub-menu {
-  display: none; /* Inicialmente ocultamos los submenús */
-  position: absolute; /* Cambio a absoluto para que aparezcan sobre otros elementos */
-  top: 30px; /* Alineados al inicio */
-  left: 100%; /* Aparecen a la derecha */
-  background-color: #f4f5fa; /* Color de fondo */
-  z-index: 2; /* Se muestran encima de otros elementos */
-  min-width: 200px; /* Ancho mínimo ajustado */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para resaltar */
-}
-
-.right-submenu .sub-menu {
-  left: -100%; /* Cambia a izquierda para que aparezca a la izquierda */
-  right: auto; /* Ajusta el valor derecho a automático */
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #444;
+  z-index: 2;
+  min-width: 200px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .open-submenu .sub-menu {
-  display: block; /* Mostramos el submenú cuando está abierto */
+  display: block;
 }
