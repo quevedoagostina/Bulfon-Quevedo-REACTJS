@@ -1,43 +1,33 @@
 import React, { useState } from 'react';
 import './css/Menu.css';
 
-const MenuItem = ({ item, onItemClick }) => {
+const MenuItem = ({ item }) => {
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
 
   const toggleSubMenu = () => {
-    if (item.isFolder) {
-      setSubMenuOpen(!isSubMenuOpen);
-    }
+    setSubMenuOpen(!isSubMenuOpen);
   };
 
   return (
-    <div
-      className={`menu-item ${item.isFolder ? 'has-submenu' : ''} ${
-        isSubMenuOpen ? 'open-submenu' : ''
-      }`}
-    >
-      <div
-        onClick={() => {
-          if (item.isFolder) {
-            toggleSubMenu();
-          } else {
-            onItemClick(item);
-          }
-        }}
-      >
+    <div className={`menu-item ${item.isFolder ? 'has-submenu' : ''} ${isSubMenuOpen ? 'open-submenu' : ''}`}>
+      <div onClick={toggleSubMenu}>
         {item.name}
+        {item.isFolder && (
+          <svg aria-hidden="true" width="16" height="16">
+            <use xlinkHref="#arrow" />
+          </svg>
+        )}
       </div>
       {item.isFolder && (
         <div className={`sub-menu ${isSubMenuOpen ? 'open-submenu' : ''}`}>
           {item.subItems.map((subItem, index) => (
-            <MenuItem key={index} item={subItem} onItemClick={onItemClick} />
+            <MenuItem key={index} item={subItem} />
           ))}
         </div>
       )}
     </div>
   );
 };
-
 
 const Menu = ({ data }) => {
   const { menuItems } = data;

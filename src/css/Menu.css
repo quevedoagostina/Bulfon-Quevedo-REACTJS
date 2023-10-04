@@ -1,58 +1,102 @@
-/* Menu.css */
+/* menu.css */
 .menu-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #333;
   display: flex;
   justify-content: center;
   z-index: 1;
-  font-family: Arial, sans-serif; /* Cambia la fuente de letra */
+  background-color: #eee;
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .menu-items {
   display: flex;
-  align-items: center;
-  list-style: none; /* Elimina las viñetas de la lista */
-  padding: 0; /* Elimina el relleno predeterminado de la lista */
-  margin: 0; /* Elimina el margen predeterminado de la lista */
+  justify-content: stretch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .menu-item {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: stretch;
+  flex-wrap: wrap;
   position: relative;
-  padding: 10px 20px;
+}
+
+.menu-item > div {
+  flex: 1 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 0;
+  font-size: inherit;
+  line-height: 1.5;
   cursor: pointer;
-  color: #fff; /* Color de texto blanco */
-  text-decoration: none; /* Quita subrayado de enlaces */
+  margin: 0.25em;
+  padding: 1em;
+  background: #eee;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  font-family: inherit;
+  border-radius: 3px;
 }
 
-.menu-item:hover {
-  background: #555; /* Cambia el color de fondo en el hover */
+.menu-item > div:hover {
+  background: #fff;
 }
 
-.has-submenu::after {
+.menu-item > div:focus {
+  outline: 0.125em dotted purple;
+  outline-offset: -0.125em;
+}
+
+.menu-item.has-submenu::after {
   content: '▶';
   position: absolute;
   right: 5px;
   top: 50%;
   transform: translateY(-50%);
-  color: #fff; /* Color de flecha blanco */
-  font-size: 0.5em; /* Ajusta el tamaño de la flecha (puedes ajustar el valor según tus preferencias) */
+  color: #000;
+  font-size: 0.5em;
 }
 
-
 .sub-menu {
-  display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #444;
-  z-index: 2;
-  min-width: 200px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  visibility: hidden;
+  min-width: 100%;
+  width: 12em;
+  margin-top: 0.25em;
+  padding: 0;
+  list-style: none;
+  background-color: #eee;
+  border-radius: 3px;
 }
 
-.open-submenu .sub-menu {
-  display: block;
+.menu-item:hover .sub-menu {
+  visibility: visible;
+}
+
+.menu-item.open-submenu > .sub-menu {
+  visibility: hidden;
+  top: 0;
+  left: 100%;
+  margin-top: 0;
+}
+
+.menu-item svg {
+  width: 1em;
+  height: 1em;
+  margin-left: 0.5em;
+}
+
+[aria-expanded="true"] svg {
+  transform: scaleY(-1);
 }

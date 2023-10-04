@@ -57,9 +57,9 @@ function App() {
 
   return (
     <div className="App">
+      <Menu data={configMenu} />
       <h1>Estacionamiento Quevedo</h1>
       <DrawClass data={CLASS_UML} />
-      <Menu data={configMenu} />
     </div>
   );
 }
