@@ -10,10 +10,10 @@ const MenuItem = ({ item }) => {
 
   return (
     <div className={`menu-item ${item.isFolder ? 'has-submenu' : ''} ${isSubMenuOpen ? 'open-submenu' : ''}`}>
-      <div onClick={toggleSubMenu}>
-        {item.name}
+      <div onClick={toggleSubMenu} className="menu-item-content">
+        <span>{item.name}</span>
         {item.isFolder && (
-          <svg aria-hidden="true" width="16" height="16">
+          <svg aria-hidden="true" width="16" height="16" className="arrow-icon">
             <use xlinkHref="#arrow" />
           </svg>
         )}
