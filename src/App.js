@@ -9,8 +9,8 @@ function App() {
     name: 'Person', // Nombre de la clase
     attributes: ['+nombre:str', '+numero-celular:str', '+patente:str', '+email:str'], // Atributos de la clase
     methods: ['+ticket-estacionamiento()'], // Métodos de la clase
-    borderColor: 'solid pink', // Color del borde del rectángulo
-    headColor: 'solid pink', // Color del encabezado (header)
+    borderColor: '#FFF', // Color del borde del rectángulo
+    headColor: '#FFC0CB', // Color del encabezado (header)
     textColor: '#333333' // Color del texto
   }
 
