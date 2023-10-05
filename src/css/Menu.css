@@ -53,11 +53,6 @@
   background: #fff;
 }
 
-.menu-item > div:focus {
-  outline: 0.125em dotted purple;
-  outline-offset: -0.125em;
-}
-
 .menu-item.has-submenu::after {
   content: '▶';
   position: absolute;
